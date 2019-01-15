@@ -5,10 +5,12 @@ public class DefaultFormatter implements NumberFormatter
 	{
 		String integer = Integer.toString(num);
 		String reversed = "";
+		int count = 0;
 		for(int i = integer.length()-1; i >= 0; i--)
 		{
 			reversed += integer.charAt(i);
-			if(reversed.length() % 3 == 0)
+			count++;
+			if(count%3 == 0)
 				reversed += ",";
 		}
 		String formatted = "";
@@ -16,6 +18,8 @@ public class DefaultFormatter implements NumberFormatter
 		{
 			formatted += reversed.charAt(i);
 		}
+		if(integer.length()%3 == 0)
+			return formatted.substring(1);
 		return formatted;
 	}
 }
